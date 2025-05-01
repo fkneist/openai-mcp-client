@@ -1,11 +1,11 @@
-import OpenAI from "npm:openai@4.76.1";
+import OpenAI from "openai";
 import { mcpClient } from "./client.ts";
 import {
   applyToolCallsIfPresent,
   isDone,
   mapToolListToOpenAiTools,
 } from "./openai-utils.ts";
-import { OPENAI_API_KEY, OPENAI_MODEL } from "./env.ts";
+import { OPENAI_API_KEY, OPENAI_BASE_URL, OPENAI_MODEL } from "./env.ts";
 import { MessageHandler, type MessageType } from "./messages.ts";
 import { performNextStepSystemPrompt } from "./prompts.ts";
 import { askForInput } from "./cli.ts";
@@ -47,6 +47,7 @@ const main = async () => {
 
   const openai = new OpenAI({
     apiKey: OPENAI_API_KEY,
+    baseURL: OPENAI_BASE_URL,
   });
 
   const mcpToolsList = await mcpClient.listTools();

@@ -1,4 +1,4 @@
-import OpenAI from "npm:openai@4.76.1";
+import OpenAI from "openai";
 import { printMessage } from "./cli.ts";
 import fs from "node:fs";
 import {

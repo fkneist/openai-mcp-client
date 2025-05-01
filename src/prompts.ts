@@ -1,4 +1,4 @@
-import OpenAI from "npm:openai@4.76.1";
+import OpenAI from "openai";
 
 export const initialMessageSystemPrompt: OpenAI.Chat.Completions.ChatCompletionMessageParam =
   {

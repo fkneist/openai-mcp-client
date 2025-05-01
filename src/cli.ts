@@ -1,5 +1,5 @@
-import { OpenAI } from "npm:openai";
-import process from "node:process";
+import OpenAI from "openai";
+import readline from "readline";
 
 const colorByRole = {
   system: "green",
@@ -7,6 +7,7 @@ const colorByRole = {
   assistant: "red",
   tool: "yellow",
   function: "purple",
+  developer: "cyan",
 };
 
 export const printMessage = (
@@ -42,13 +43,22 @@ export const printMessage = (
 
 export const askForInput = () => {
   console.log("%cuser", `color: blue; font-weight: bold;`);
-  const result = prompt(">");
 
-  // Delete the prompt lines, will be replaced by printMessage
-  process.stdout.write("\x1b[A");
-  process.stdout.write("\x1b[2K");
-  process.stdout.write("\x1b[A");
-  process.stdout.write("\x1b[2K");
+  const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout,
+  });
 
-  return result;
+  return new Promise<string>((resolve) => {
+    rl.question("> ", (answer) => {
+      // Delete the prompt lines, will be replaced by printMessage
+      process.stdout.write("\x1b[A");
+      process.stdout.write("\x1b[2K");
+      process.stdout.write("\x1b[A");
+      process.stdout.write("\x1b[2K");
+
+      rl.close();
+      resolve(answer);
+    });
+  });
 };

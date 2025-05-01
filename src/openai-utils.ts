@@ -1,4 +1,4 @@
-import OpenAI from "npm:openai@4.76.1";
+import OpenAI from "openai";
 import { callTool } from "./mcp.ts";
 import { mcpClient } from "./client.ts";
 import type { MessageType } from "./messages.ts";
