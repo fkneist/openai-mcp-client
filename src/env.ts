@@ -8,6 +8,8 @@ const MCP_SERVER_COMMAND = process.env.MCP_SERVER_COMMAND!;
 const MCP_SERVER_ARGS = JSON.parse(process.env.MCP_SERVER_ARGS || "[]")!;
 const DEBUG = process.env.DEBUG === "true";
 const OPENAI_MODEL = process.env.OPENAI_MODEL || "gpt-4o-mini";
+const MCP_CONNECTION_TYPE = process.env.MCP_CONNECTION_TYPE || "stdio"; // "stdio" or "sse"
+const MCP_SSE_ENDPOINT = process.env.MCP_SSE_ENDPOINT || ""; // SSE endpoint URL
 
 if (!OPENAI_API_KEY) {
   throw new Error("OPENAI_API_KEY is not set");
@@ -28,4 +30,6 @@ export {
   MCP_SERVER_ARGS,
   DEBUG,
   OPENAI_MODEL,
+  MCP_CONNECTION_TYPE,
+  MCP_SSE_ENDPOINT,
 };
