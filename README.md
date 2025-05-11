@@ -4,11 +4,11 @@ This is a simple example of how to use the Model Context Protocol (MCP) with Ope
 
 # Setup Guide
 
-- Ensure Deno v2 is installed
-- Run `deno install` to install dependencies
+- Ensure pnpm is installed
+- Run `pnpm install` to install dependencies
 - Copy `.env.example` to `.env` and fill in the values
   - You can choose any MCP server you like - bring your own or use one from the official [MCP server list](https://github.com/modelcontextprotocol/servers/tree/main)
-- Run `deno run dev` to start the application
+- Run `pnpm dev` to start the application
 
 # Warning
 
